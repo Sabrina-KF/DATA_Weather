@@ -1,0 +1,47 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: weather_postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-weather_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-weather_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-weather_db}
+    ports:
+      - "5432:5432"
+    volumes:
+      - weather_pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-weather_user}"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  adminer:
+    image: adminer:latest
+    container_name: weather_adminer
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: weather_dashboard
+    command: streamlit run dashboard/app.py --server.address=0.0.0.0
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-weather_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-weather_pass}
+      POSTGRES_DB: ${POSTGRES_DB:-weather_db}
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+    ports:
+      - "8501:8501"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  weather_pg_data:
