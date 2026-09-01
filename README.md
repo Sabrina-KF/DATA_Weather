@@ -1,12 +1,12 @@
-# 🌦️ Pipeline ELT — Météo Tours
+# Pipeline ELT — Météo Tours
 
 Pipeline de données de bout en bout : extraction d'une API publique, transformation avec contrôle qualité, orchestration via Dagster, chargement en base PostgreSQL, et restitution dans un dashboard Streamlit.
 
-Projet construit pour démontrer une chaîne Data Engineering complète et réellement exécutable — pas un notebook isolé.
+Projet construit pour démontrer une chaîne Data Engineering complète et réellement exécutable, pas seulement un notebook isolé.
 
 ## Pourquoi ce projet
 
-En reconversion vers le Data Engineering après plusieurs années en ingénierie logicielle et QA, je voulais un projet qui prouve que je sais construire un pipeline de bout en bout et le faire tourner en production locale, pas seulement écrire une requête SQL ou un notebook Jupyter isolé.
+En reconversion vers le Data Engineering après plusieurs années en ingénierie logicielle et QA, je voulais un projet qui prouve que je sais construire un pipeline de bout en bout et le faire tourner en production locale, pas seulement écrire une requête SQL ou un notebook Jupyter.
 
 ## Architecture
 
@@ -42,7 +42,7 @@ Chaque étape est un asset Dagster : versionné, observable, rejouable indépend
 ## Lancer le projet
 
 \`\`\`bash
-git clone <ton-repo>
+git clone https://github.com/Sabrina-KF/DATA_Weather
 cd tours-weather-pipeline
 cp .env.example .env
 pip install -r requirements.txt
@@ -76,4 +76,4 @@ tours-weather-pipeline/
 
 ---
 
-*Projet réalisé dans le cadre de ma reconversion en Data Engineering, en complément de mon IBM Data Science Professional Certificate.*
+*Je rends public la version finale de ce projet réalisé dans le cadre de ma reconversion en Data Engineering, en complément de mon IBM Data Science Professional Certificate. Voici le résultat de l'apprentissage et de l'utilisation des outils et méthodes apprises tout au long de ma carrière dans le cadre d'une requête propre à la ville de Tours.*

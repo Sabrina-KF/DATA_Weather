@@ -9,7 +9,7 @@ from src.config import get_database_url
 from src.load import TABLE_NAME
 
 st.set_page_config(page_title="Météo Tours — Pipeline ELT", layout="wide")
-st.title("🌦️ Prévisions météo — Tours")
+st.title(" Prévisions météo — Tours")
 st.caption("Données extraites via Open-Meteo, transformées et orchestrées avec Dagster.")
 
 engine = create_engine(get_database_url())
